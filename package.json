@@ -10,9 +10,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cannon": "^0.6.2",
     "three.js": "^0.77.1"
   },
   "devDependencies": {
+    "ndarray": "^1.0.18",
+    "voxel": "^0.5.0",
     "watchify": "^3.9.0"
   }
 }
