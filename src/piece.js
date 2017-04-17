@@ -30,14 +30,14 @@ module.exports = function() {
 
     for (var i = 0; i < coords.length; i++) {
       var coord = coords[i];
-      var shape = new CANNON.Sphere(1);
-      // new CANNON.Box(new CANNON.Vec3(0.5, 0.5, 0.5));
-      body.addShape(shape, new CANNON.Vec3(coord.x, -coord.y, coord.z));
+      var shape = new CANNON.Box(new CANNON.Vec3(0.5, 0.5, 0.5));
+      body.addShape(shape, new CANNON.Vec3(coord[0], coord[1], coord[2]));
     }
 
     body.position.set(0, 20, 0);
-    // body.quaternion.setFromEuler(0, 0, Math.random() * Math.PI * 2);
-
+    body.quaternion.setFromEuler(0, 0, Math.random() * Math.PI * 2);
+    body.updateMassProperties();
+    
     physics.add(blocks.object, body);
 
     return body;

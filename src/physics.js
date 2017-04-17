@@ -4,15 +4,8 @@ var settings = require('./settings');
 function LinkedObject(object, body) {
   function update() {
     if (object != null) {
-      // var euler = new CANNON.Vec3();
-      // body.quaternion.toEuler(euler);
-      // body.quaternion.setFromEuler(0, 0, euler.z);
-
       object.quaternion.fromArray(body.quaternion.toArray());
-      // object.rotation.x = 0;
-      // object.rotation.y = 0;
       object.position.fromArray(body.position.toArray());
-      // object.position.z = 0;
     }
   };
 
@@ -57,7 +50,7 @@ module.exports = function() {
 
   function add(object, body) {
     var linkedObject = LinkedObject(object, body);
-    linkedObject._id = require('./guid');
+    linkedObject._id = require('./guid')();
     map[linkedObject._id] = linkedObject;
     world.add(body);
 

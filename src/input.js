@@ -1,5 +1,6 @@
 var THREE = require('three');
 var CANNON = require('cannon');
+var keycode = require('keycode');
 
 module.exports = function(params) {
   var camera = params.camera;
@@ -17,9 +18,8 @@ module.exports = function(params) {
   var mouseBody = new CANNON.Body({
     mass: mass,
     shape: sphereShape
-  }); // Step 2
+  });
   mouseBody.position.set(0, 20, 0);
-  // physics.add(null, mouseBody);
 
   var plane = new THREE.PlaneGeometry(1000, 1000);
   var planeMesh = new THREE.Mesh(plane);
@@ -27,6 +27,7 @@ module.exports = function(params) {
 
   function onMousedown(e) {
     getMousePiece();
+    pieces.add();
   };
 
   function onMouseup(e) {

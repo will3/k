@@ -7,7 +7,15 @@ module.exports = function(params) {
   var onUpdate = params.onUpdate || function() {};
   var chunks = require('../chunks')();
   var object = new THREE.Object3D();
-  var material = engine.sharedMaterial;
+  var useOwnMaterial = params.useOwnMaterial || false;
+
+  var material;
+  if (useOwnMaterial) {
+    material = new THREE.MultiMaterial();
+    material.materials = [null];
+  } else {
+    material = engine.sharedMaterial;
+  }
 
   var colors = {};
 
